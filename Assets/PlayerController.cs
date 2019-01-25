@@ -5,9 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(PhysicsObject))]
 public class PlayerController : MonoBehaviour
 {
-    public float maxSpeed = 7;
-    public float jumpForce = 7;
-
     private PhysicsObject physicsObject;
 
     // Start is called before the first frame update
@@ -20,15 +17,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Input.GetAxis("Horizontal") > 0) {
-            this.physicsObject.MoveRight(this.maxSpeed);
+            this.physicsObject.MoveRight();
         }
 
         if (Input.GetAxis("Horizontal") < 0) {
-            this.physicsObject.MoveLeft(this.maxSpeed);
+            this.physicsObject.MoveLeft();
         }
 
         if (Input.GetButton("Jump")) {
-            this.physicsObject.Jump(this.jumpForce);
+            this.physicsObject.Jump();
         }
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PhysicsObject : MonoBehaviour {
+    [Header("Movement")]
+    public float maxSpeed = 7;
+    public float jumpForce = 7;
+
+    [Header("Physics")]
     public float minGroundNormalY = .65f;
     public float gravityModifier = 1f;
 
@@ -20,20 +25,20 @@ public class PhysicsObject : MonoBehaviour {
     protected const float minMoveDistance = 0.001f;
     protected const float shellRadius = 0.01f;
 
-    public void MoveRight(float targetSpeed)
+    public void MoveRight()
     {
-        this.targetVelocity.x = targetSpeed;
+        this.targetVelocity.x = this.maxSpeed;
     }
 
-    public void MoveLeft(float targetSpeed)
+    public void MoveLeft()
     {
-        this.targetVelocity.x = -targetSpeed;
+        this.targetVelocity.x = -this.maxSpeed;
     }
 
-    public void Jump(float jumpForce)
+    public void Jump()
     {
         if (this.grounded) {
-            this.velocity.y = jumpForce;
+            this.velocity.y = this.jumpForce;
         }
     }
 
