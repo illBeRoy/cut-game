@@ -7,6 +7,7 @@ public class PhysicsObject : MonoBehaviour {
     [Header("Movement")]
     public float maxSpeed = 7;
     public float jumpForce = 7;
+    public Vector2 initialFacingDirection = Vector2.right;
 
     [Header("Physics")]
     public float minGroundNormalY = .65f;
@@ -20,19 +21,20 @@ public class PhysicsObject : MonoBehaviour {
     private ContactFilter2D contactFilter;
     private RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
     private List<RaycastHit2D> hitBufferList = new List<RaycastHit2D> (16);
-
-
-    protected const float minMoveDistance = 0.001f;
-    protected const float shellRadius = 0.01f;
+    private const float minMoveDistance = 0.001f;
+    private const float shellRadius = 0.01f;
+    private Vector2 facingDirection;
 
     public void MoveRight()
     {
         this.targetVelocity.x = this.maxSpeed;
+        this.facingDirection = Vector2.right;
     }
 
     public void MoveLeft()
     {
         this.targetVelocity.x = -this.maxSpeed;
+        this.facingDirection = Vector2.left;
     }
 
     public void Jump()
@@ -42,6 +44,10 @@ public class PhysicsObject : MonoBehaviour {
         }
     }
 
+    public Vector2 GetFacingDirection() {
+        return this.facingDirection;
+    }
+
     void OnEnable()
     {
         rb2d = GetComponent<Rigidbody2D> ();
@@ -49,6 +55,7 @@ public class PhysicsObject : MonoBehaviour {
 
     void Start () 
     {
+        this.facingDirection = this.initialFacingDirection;
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask (Physics2D.GetLayerCollisionMask (gameObject.layer));
         contactFilter.useLayerMask = true;
@@ -72,14 +79,15 @@ public class PhysicsObject : MonoBehaviour {
 
         Vector2 move = moveAlongGround * deltaPosition.x;
 
-        Movement (move, false);
+        UpdateMovement(move, false);
 
         move = Vector2.up * deltaPosition.y;
 
-        Movement (move, true);
+        UpdateMovement(move, true);
+        UpdateFacingDirection();
     }
 
-    private void Movement(Vector2 move, bool yMovement)
+    private void UpdateMovement(Vector2 move, bool yMovement)
     {
         float distance = move.magnitude;
 
@@ -118,5 +126,17 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         rb2d.position = rb2d.position + move.normalized * distance;
+    }
+
+    private void UpdateFacingDirection() {
+        Vector3 localScale = this.gameObject.transform.localScale;
+
+        if (this.facingDirection.x > 0) {
+            localScale.x = Mathf.Abs(localScale.x);
+        } else if (this.facingDirection.x < 0) {
+            localScale.x = -Mathf.Abs(localScale.x);
+        }
+
+        this.gameObject.transform.localScale = localScale;
     }
 }
