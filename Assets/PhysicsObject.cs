@@ -59,7 +59,7 @@ public class PhysicsObject : MonoBehaviour {
         targetVelocity = Vector2.zero;
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
