@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class FollowerEnemy : MonoBehaviour
 {
@@ -14,14 +15,24 @@ public class FollowerEnemy : MonoBehaviour
         target = GameObject.FindWithTag("Player").transform;
     }
 
+    internal void TakeProjectileHit()
+    {
+            Explode();
+    }
+
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
 
         if(Vector2.Distance(target.transform.position, transform.position) < triggerDistance)
         {
-            Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            Explode();
         }
+    }
+
+    private void Explode()
+    {
+        Instantiate(explosion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
