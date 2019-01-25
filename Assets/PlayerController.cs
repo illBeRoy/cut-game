@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetAxisRaw("Vertical") > 0) {
                 this.shooter.Shoot(Vector2.up);
             } else {
-                this.shooter.Shoot(Vector2.right);
+                this.shooter.Shoot(this.physicsObject.GetFacingDirection());
             }
         }
     }
