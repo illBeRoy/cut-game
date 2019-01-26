@@ -240,7 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   currentHealth: 0
-  healthSlider: {fileID: 0}
+  invincibilityDurationInSeconds: 1
+  healthBar: {fileID: 0}
   deathSound: {fileID: 0}
   shootingPointFront: {fileID: 7241546841992772900}
   shootingPointUp: {fileID: 7909029956408313950}
@@ -348,6 +349,13 @@ MonoBehaviour:
   - name: Idle Front
     frames:
     - {fileID: 21300000, guid: 6655b68c8cdab4e0bba563e60a51cb6b, type: 3}
+    - {fileID: 21300000, guid: 6655b68c8cdab4e0bba563e60a51cb6b, type: 3}
+    - {fileID: 21300000, guid: 6655b68c8cdab4e0bba563e60a51cb6b, type: 3}
+    - {fileID: 21300000, guid: 6655b68c8cdab4e0bba563e60a51cb6b, type: 3}
+    - {fileID: 21300000, guid: 6655b68c8cdab4e0bba563e60a51cb6b, type: 3}
+    - {fileID: 21300000, guid: 6655b68c8cdab4e0bba563e60a51cb6b, type: 3}
+    - {fileID: 21300000, guid: 6655b68c8cdab4e0bba563e60a51cb6b, type: 3}
+    - {fileID: 21300000, guid: 6655b68c8cdab4e0bba563e60a51cb6b, type: 3}
     framesPerSecond: 1
   - name: Walk Front
     frames:
@@ -379,4 +387,9 @@ MonoBehaviour:
     frames:
     - {fileID: 21300000, guid: 89a174be8f51a416a9d07a624fad079c, type: 3}
     framesPerSecond: 1
+  - name: Climb
+    frames:
+    - {fileID: 21300000, guid: 3cb661ccde90d47a58c2ada217ff2b82, type: 3}
+    - {fileID: 21300000, guid: 9bf5b3db4aa4245e084a7b0f3a7f7729, type: 3}
+    framesPerSecond: 4
   customTarget: {fileID: 1090080471175479584}

@@ -44,12 +44,12 @@ public class PhysicsObject : MonoBehaviour {
 
     public void MoveUp()
     {
-        this.UpdateMovement(new Vector2(0, 0.08f), true);
+        this.UpdateMovement(new Vector2(0, this.climbSpeed * Time.deltaTime), true);
     }
 
     public void MoveDown()
     {
-        this.UpdateMovement(new Vector2(0, -0.08f), true);
+        this.UpdateMovement(new Vector2(0, -this.climbSpeed * Time.deltaTime), true);
     }
 
     public void Jump()
@@ -71,7 +71,6 @@ public class PhysicsObject : MonoBehaviour {
     public bool IsWalking() {
         return this.grounded && Mathf.Abs(this.velocity.x) > .1;
     }
-
 
     public void disableRigidBody() {
         this.gravityModifier = 0f;

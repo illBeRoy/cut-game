@@ -13,8 +13,6 @@ public class BomberBomb : MonoBehaviour
         if (other.gameObject.GetComponent<BomberEnemy>())
             return;
 
-        Debug.Log(other.gameObject.name);
-
         Instantiate(explosion, transform.position, transform.rotation);
         Destroy(gameObject);
     }

@@ -103,12 +103,17 @@ public class PlayerController : MonoBehaviour
             if (Input.GetAxisRaw("Vertical") > 0)
             {
                 this.physicsObject.MoveUp();
+                this.spriteAnimator.Play();
             }
             else if (Input.GetAxisRaw("Vertical") < 0)
             {
                 this.physicsObject.MoveDown();
+                this.spriteAnimator.Play();
+            } else {
+                this.spriteAnimator.Pause();
             }
         }
+
         if (Input.GetAxisRaw("Horizontal") > 0) {
             this.physicsObject.MoveRight();
         }
@@ -147,7 +152,9 @@ public class PlayerController : MonoBehaviour
 
     void UpdateAnimations()
     {
-        if (this.physicsObject.IsWalking()) {
+        if (this.isClimbing) {
+            this.spriteAnimator.SetSpriteSheet("Climb");
+        } else if (this.physicsObject.IsWalking()) {
             this.spriteAnimator.SetSpriteSheet(GetActualAnimationName("Walk"));
         } else if (!this.physicsObject.IsOnGround()) {
             this.spriteAnimator.SetSpriteSheet(GetActualAnimationName("Jump"));

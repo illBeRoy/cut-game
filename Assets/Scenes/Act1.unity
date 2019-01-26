@@ -577,6 +577,11 @@ PrefabInstance:
       propertyPath: jumpingSound
       value: 
       objectReference: {fileID: 8300000, guid: ba21328ed8a8e49a6988285f74bb2990, type: 3}
+    - target: {fileID: 7241546842652871916, guid: 832502186a6b74918a637be9821daa52,
+        type: 3}
+      propertyPath: climbSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7241546842652871907, guid: 832502186a6b74918a637be9821daa52,
         type: 3}
       propertyPath: projectile
@@ -1697,6 +1702,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: dd9a079217e014c5aa7d209f4ca2fc00, type: 3}
   endgameCut: {fileID: 8300000, guid: eb3dfe33b707f4f04bd6ad768383c88f, type: 3}
+  increaseDifficultyEveryXSeconds: 10
+  increaseDifficultyBy: 1
+  minimalSpawnInterval: 0.5
 --- !u!1 &1156650593
 GameObject:
   m_ObjectHideFlags: 0
