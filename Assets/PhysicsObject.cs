@@ -29,6 +29,15 @@ public class PhysicsObject : MonoBehaviour {
     private float gravityScale = 0f;
     private AudioSource audioSource;
 
+    public bool IsOnGround()
+    {
+        return this.grounded;
+    }
+
+    public bool IsWalking() {
+        return this.grounded && Mathf.Abs(this.velocity.x) > .1;
+    }
+
     public void MoveRight()
     {
         this.targetVelocity.x = this.maxSpeed;

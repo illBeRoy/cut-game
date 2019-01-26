@@ -46,8 +46,10 @@ public class SpriteAnimator : MonoBehaviour
 
     public void SetSpriteSheet(string name)
     {
-        this.currentSpriteSheet = this.GetSpritesheetByName(name);
-        this.DisplayFrame(0);
+        if (name != this.currentSpriteSheet.name) {
+            this.currentSpriteSheet = this.GetSpritesheetByName(name);
+            this.DisplayFrame(0);
+        }
     }
 
     private SpriteSheet GetSpritesheetByName(string name)

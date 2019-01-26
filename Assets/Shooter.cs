@@ -30,6 +30,11 @@ public class Shooter : MonoBehaviour
         }
     }
 
+    public void SetShootingPoint(Transform shootingPoint)
+    {
+        this.shootingPoint = shootingPoint;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
