@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
@@ -42,8 +43,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EndgameRoutine()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
+        this.audioSource.volume = 1f;
         this.audioSource.PlayOneShot(this.endgameCut);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("GameOver");
     }
 
     public void EndGame()
