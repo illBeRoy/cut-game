@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BomberEnemySpawner : MonoBehaviour
 {
-    public BomberEnemy enemy;
+    public GameObject enemy;
     public float spawnInterval = 4;
 
     void Start()
@@ -16,9 +16,11 @@ public class BomberEnemySpawner : MonoBehaviour
     {
         for(; ; )
         {
-            var enemyClone = Instantiate<BomberEnemy>(enemy, transform.position, transform.rotation);
+            var gameObjectClone  = Instantiate(enemy, transform.position, transform.rotation);
+            var enemyClone = gameObjectClone.GetComponent<BomberEnemy>();
 
             enemyClone.bombDroppingInterval = Random.Range(1.5f, 5);
+            enemyClone.speed = Random.Range(1.5f, 5);
 
             yield return new WaitForSeconds(spawnInterval);
         }
