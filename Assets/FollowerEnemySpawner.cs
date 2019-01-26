@@ -18,7 +18,7 @@ public class FollowerEnemySpawner : MonoBehaviour
             var gameObjectClone = Instantiate(enemy, transform.position, transform.rotation);
             var enemyClone = gameObjectClone.GetComponent<Follower>();
 
-            enemyClone.speed= Random.Range(1f, 5f);
+            enemyClone.speed= Random.Range(.5f, 4f);
 
             yield return new WaitForSeconds(spawnInterval);
         }
