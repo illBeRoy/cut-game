@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(AudioSource))]
 public class PhysicsObject : MonoBehaviour {
     [Header("Movement")]
     public float maxSpeed = 7;
@@ -55,7 +54,9 @@ public class PhysicsObject : MonoBehaviour {
     public void Jump()
     {
         if (this.grounded) {
-            this.audioSource.PlayOneShot(this.jumpingSound);
+            if (this.audioSource != null && this.jumpingSound != null) {
+                this.audioSource.PlayOneShot(this.jumpingSound);
+            }
             this.velocity.y = this.jumpForce;
         }
     }

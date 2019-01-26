@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class Shooter : MonoBehaviour
 {
     [Header("Gun Behavior")]
@@ -22,7 +21,10 @@ public class Shooter : MonoBehaviour
     public void Shoot(Vector2 direction)
     {
         if (this.cooldownLeft <= 0) {
-            this.audioSource.PlayOneShot(this.shootingSound);
+            if (this.audioSource != null && this.shootingSound != null) {
+                this.audioSource.PlayOneShot(this.shootingSound);
+            }
+
             this.CreateProjectile(direction);
             this.cooldownLeft = 1f / this.shotsPerSecond;
         }
