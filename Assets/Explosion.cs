@@ -2,11 +2,17 @@
 
 public class Explosion : MonoBehaviour
 {
+    private bool hasAlreadyHitPlayer = false;
     private const int LIFE_TIME_IN_SECONDS = 2;
     private float timeSinceCreated = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (hasAlreadyHitPlayer) {
+            return;
+
+        }
+
         var playerController = other.gameObject.GetComponent<PlayerController>();
         if (playerController )
         {
@@ -15,7 +21,7 @@ public class Explosion : MonoBehaviour
                 return;
 
 
-            playerController.TakeHit(1- distance);
+            playerController.TakeHit(1);
         }
 
     }

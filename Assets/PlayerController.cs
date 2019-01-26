@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [Header("Health Components")]
     public int startingHealth = 100;
     public int currentHealth;
-    public Slider healthSlider;
+    public float invincibilityDurationInSeconds = 1;
+    public HealthBar healthBar;
     public AudioClip deathSound;
 
     [Header("Gun Wiring")]
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private PhysicsObject physicsObject;
     private SpriteAnimator spriteAnimator;
     private Shooter shooter;
+    private float hitCooldownTime = 0;
     private bool isClimbing = false;
     private bool isLookingUp = false;
     private bool isDead = false;
@@ -30,20 +32,23 @@ public class PlayerController : MonoBehaviour
         this.physicsObject = this.GetComponent<PhysicsObject>();
         this.shooter = this.GetComponent<Shooter>();
         this.spriteAnimator = this.GetComponent<SpriteAnimator>();
+        this.healthBar.maxValue = this.startingHealth;
 
         currentHealth = startingHealth;
     }
 
     internal void TakeHit(float damage)
     {
-        if (this.isDead) {
+        if (this.isDead || this.hitCooldownTime > 0) {
             return;
         }
 
-        currentHealth -= (int)(damage * 40f);
-        healthSlider.value = currentHealth;
+        currentHealth -= (int)(damage);
+        this.healthBar.SetValue(this.currentHealth);
         if (currentHealth <= 0) {
             this.Die();
+        } else {
+            this.hitCooldownTime = this.invincibilityDurationInSeconds;
         }
     }
 
@@ -80,6 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!this.isDead) {
             this.HandleControls();
+            this.HandleHealthManagent();
         }
     }
     
@@ -129,6 +135,13 @@ public class PlayerController : MonoBehaviour
             } else {
                 this.shooter.Shoot(this.physicsObject.GetFacingDirection());
             }
+        }
+    }
+
+    void HandleHealthManagent()
+    {
+        if (this.hitCooldownTime > 0 ) {
+            this.hitCooldownTime -= Time.deltaTime;
         }
     }
 
