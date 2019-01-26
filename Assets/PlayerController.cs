@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     internal void TakeHit(float damage)
     {
-        currentHealth -= (int)(damage * 20f);
+        currentHealth -= (int)(damage * 40f);
         healthSlider.value = currentHealth;
     }
 
