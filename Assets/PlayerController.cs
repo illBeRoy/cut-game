@@ -1,11 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PhysicsObject))]
 [RequireComponent(typeof(Shooter))]
 public class PlayerController : MonoBehaviour
 {
+    public int startingHealth = 100;
+    public int currentHealth;
+    public Slider healthSlider;
+
     private PhysicsObject physicsObject;
     private Shooter shooter;
     private bool isClimbing = false;
@@ -15,6 +19,14 @@ public class PlayerController : MonoBehaviour
     {
         this.physicsObject = this.GetComponent<PhysicsObject>();
         this.shooter = this.GetComponent<Shooter>();
+
+        currentHealth = startingHealth;
+    }
+
+    internal void TakeHit(float damage)
+    {
+        currentHealth -= (int)(damage * 20f);
+        healthSlider.value = currentHealth;
     }
 
     void OnTriggerEnter2D(Collider2D col)
