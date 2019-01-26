@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AudioSource))]
 public class PhysicsObject : MonoBehaviour {
     [Header("Movement")]
     public float maxSpeed = 7;
     public float jumpForce = 7;
+    public float climbSpeed = 3;
     public Vector2 initialFacingDirection = Vector2.right;
+    public AudioClip jumpingSound;
 
     [Header("Physics")]
     public float minGroundNormalY = .65f;
@@ -25,8 +28,7 @@ public class PhysicsObject : MonoBehaviour {
     private const float shellRadius = 0.01f;
     private Vector2 facingDirection;
     private float gravityScale = 0f;
-    
-
+    private AudioSource audioSource;
 
     public void MoveRight()
     {
@@ -53,6 +55,7 @@ public class PhysicsObject : MonoBehaviour {
     public void Jump()
     {
         if (this.grounded) {
+            this.audioSource.PlayOneShot(this.jumpingSound);
             this.velocity.y = this.jumpForce;
         }
     }
@@ -75,6 +78,7 @@ public class PhysicsObject : MonoBehaviour {
     void OnEnable()
     {
         rb2d = GetComponent<Rigidbody2D> ();
+        this.audioSource = this.GetComponent<AudioSource>();
         this.gravityScale = this.rb2d.gravityScale;
     }
 
@@ -89,12 +93,14 @@ public class PhysicsObject : MonoBehaviour {
     
     void Update () 
     {
+        print("update");
         targetVelocity = Vector2.zero;
     }
 
 
     void LateUpdate()
     {
+        print("late update");
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
 

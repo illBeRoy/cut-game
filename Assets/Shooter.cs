@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Shooter : MonoBehaviour
 {
     [Header("Gun Behavior")]
     public Transform shootingPoint;
     public int shotsPerSecond = 1;
+    public AudioClip shootingSound;
 
     [Header("Projectile Behavior")]
     public GameObject projectile;
@@ -15,10 +17,12 @@ public class Shooter : MonoBehaviour
 
     private float cooldownLeft = 0;
     private List<ProjectileData> projectilesData = new List<ProjectileData>();
+    private AudioSource audioSource;
 
     public void Shoot(Vector2 direction)
     {
         if (this.cooldownLeft <= 0) {
+            this.audioSource.PlayOneShot(this.shootingSound);
             this.CreateProjectile(direction);
             this.cooldownLeft = 1f / this.shotsPerSecond;
         }
@@ -27,7 +31,7 @@ public class Shooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.audioSource = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

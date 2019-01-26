@@ -32,15 +32,22 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag.ToString() == "Climbable")
         {
             this.isClimbing = false;
-            this.physicsObject.MoveDown();
             this.physicsObject.enableRigidBody();
         }
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+        this.HandleControls();
+    }
+    
     void LateUpdate()
     {
+        this.HandleControls();
+    }
 
+    void HandleControls()
+    {
         if (this.isClimbing) {
             if (Input.GetAxisRaw("Vertical") > 0)
             {
