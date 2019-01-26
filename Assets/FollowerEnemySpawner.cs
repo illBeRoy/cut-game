@@ -5,6 +5,8 @@ public class FollowerEnemySpawner : MonoBehaviour
 {
     public GameObject enemy;
     public float spawnInterval = 4;
+    public float waitOffset = 0;
+
     void Start()
     {
         StartCoroutine("SpawnEnemySometimes");
@@ -13,6 +15,8 @@ public class FollowerEnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemySometimes()
     {
+        yield return new WaitForSeconds(waitOffset);
+        
         for(; ; )
         {
             var gameObjectClone = Instantiate(enemy, transform.position, transform.rotation);
