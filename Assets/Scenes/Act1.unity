@@ -294,6 +294,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUDCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6375107877973019761, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
+        type: 3}
+      propertyPath: m_Value
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6375107879008039476, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -402,7 +407,17 @@ PrefabInstance:
     - target: {fileID: 6375107878101038286, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
         type: 3}
       propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375107878101038286, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
+        type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375107878101038286, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6375107878288286550, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
         type: 3}
