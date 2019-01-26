@@ -4,10 +4,12 @@ public class PlayerProjectile : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var followerEnemy = other.gameObject.GetComponent<FollowerEnemy>();
-        if (followerEnemy)
+
+        var enemy = other.gameObject.GetComponent<Enemy>();
+
+        if (enemy)
         {
-            followerEnemy.TakeProjectileHit();
+            enemy.TakeProjectileHit();
             Destroy(gameObject);
         }
 
