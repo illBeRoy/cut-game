@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FollowerEnemySpawner : MonoBehaviour
 {
-    public Follower enemy;
+    public GameObject enemy;
     public float spawnInterval = 4;
     void Start()
     {
@@ -15,7 +15,8 @@ public class FollowerEnemySpawner : MonoBehaviour
     {
         for(; ; )
         {
-            var enemyClone = Instantiate<Follower >(enemy, transform.position, transform.rotation);
+            var gameObjectClone = Instantiate(enemy, transform.position, transform.rotation);
+            var enemyClone = gameObjectClone.GetComponent<Follower>();
 
             enemyClone.speed= Random.Range(1f, 5f);
 
