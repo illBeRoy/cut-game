@@ -28,6 +28,7 @@ public class PhysicsObject : MonoBehaviour {
     private Vector2 facingDirection;
     private float gravityScale = 0f;
     private AudioSource audioSource;
+    private float timeUntilNextJumpSFX = 0;
 
     public void MoveRight()
     {
@@ -54,7 +55,8 @@ public class PhysicsObject : MonoBehaviour {
     public void Jump()
     {
         if (this.grounded) {
-            if (this.audioSource != null && this.jumpingSound != null) {
+            if (this.timeUntilNextJumpSFX <= 0 && this.audioSource != null && this.jumpingSound != null) {
+                this.timeUntilNextJumpSFX = 1f;
                 this.audioSource.PlayOneShot(this.jumpingSound);
             }
             this.velocity.y = this.jumpForce;
@@ -174,6 +176,9 @@ public class PhysicsObject : MonoBehaviour {
         }
 
         rb2d.position = rb2d.position + move.normalized * distance;
+        if (this.timeUntilNextJumpSFX > 0) {
+            this.timeUntilNextJumpSFX -= Time.deltaTime;
+        }
     }
 
     private void UpdateFacingDirection() {
