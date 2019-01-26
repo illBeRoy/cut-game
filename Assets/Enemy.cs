@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
 
     internal void TakeProjectileHit()
     {
-        GameObject.Find("Score").GetComponent<Score>().addScore(100);
         Explode();
     }
 
