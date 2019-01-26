@@ -503,6 +503,11 @@ PrefabInstance:
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: 09fb682fc7d6942929084d560d810eb0, type: 3}
+    - target: {fileID: 7241546842652871917, guid: 832502186a6b74918a637be9821daa52,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 303686891}
     - target: {fileID: 7241546842652871916, guid: 832502186a6b74918a637be9821daa52,
         type: 3}
       propertyPath: minGroundNormalY
@@ -549,11 +554,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7241546842652871917, guid: 832502186a6b74918a637be9821daa52,
-        type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 303686891}
     - target: {fileID: 7559275988125267208, guid: 832502186a6b74918a637be9821daa52,
         type: 3}
       propertyPath: m_SortingOrder
@@ -1548,6 +1548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: dd9a079217e014c5aa7d209f4ca2fc00, type: 3}
+  endgameCut: {fileID: 8300000, guid: eb3dfe33b707f4f04bd6ad768383c88f, type: 3}
 --- !u!1 &1156650593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,9 +1582,9 @@ RectTransform:
   m_Father: {fileID: 1731580847}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 366, y: 221}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -115.600006, y: -38.399994}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156650595
