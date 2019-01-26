@@ -399,11 +399,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6375107878101038286, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6375107878288286550, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -412,6 +407,11 @@ PrefabInstance:
     - target: {fileID: 6375107878288286550, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6375107878101038286, guid: 0187c5b2666b9b149a2f2088d71b3d9c,
+        type: 3}
+      propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -483,6 +483,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7241546842652871917, guid: 832502186a6b74918a637be9821daa52,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 303686891}
     - target: {fileID: 7241546842652871916, guid: 832502186a6b74918a637be9821daa52,
         type: 3}
       propertyPath: minGroundNormalY
@@ -529,11 +534,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7241546842652871917, guid: 832502186a6b74918a637be9821daa52,
-        type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 303686891}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 832502186a6b74918a637be9821daa52, type: 3}
 --- !u!1 &853967976
@@ -903,6 +903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984174928}
   - component: {fileID: 984174927}
+  - component: {fileID: 984174929}
   m_Layer: 0
   m_Name: Clouds
   m_TagString: Untagged
@@ -952,7 +953,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 22.795837, y: 9.13}
+  m_Size: {x: 42.597115, y: 9.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -966,12 +967,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984174926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: -0.46, z: 20}
+  m_LocalPosition: {x: 12.358, y: -0.46, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984174929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984174926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cbdefc7f72ae4d48ab911e140be2cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 13.75
+  speed: 0.8
 --- !u!1001 &1070707395
 PrefabInstance:
   m_ObjectHideFlags: 0
