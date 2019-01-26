@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4180889000396790911}
   - component: {fileID: 4180889000396790905}
   - component: {fileID: 4180889000396790906}
+  - component: {fileID: 1211424582080254309}
+  - component: {fileID: 6121727049676183095}
   m_Layer: 0
   m_Name: BomberEnemy
   m_TagString: Untagged
@@ -121,5 +123,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   bombDroppingInterval: 3
-  explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
   bomb: {fileID: 7838530258116978045, guid: 4398a6c3a442d7f40838aff18cd54641, type: 3}
+--- !u!114 &1211424582080254309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180889000396790907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8e9168b40d045158de4218adbf682e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+--- !u!50 &6121727049676183095
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4180889000396790907}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

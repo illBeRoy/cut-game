@@ -7,7 +7,6 @@ public class BomberEnemy : MonoBehaviour
     public float speed = 4;
     public float bombDroppingInterval = 1;
 
-    public GameObject explosion;
     public GameObject bomb;
 
     private Transform target;

@@ -94,14 +94,12 @@ public class PhysicsObject : MonoBehaviour {
     
     void Update () 
     {
-        print("update");
         targetVelocity = Vector2.zero;
     }
 
 
     void LateUpdate()
     {
-        print("late update");
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
         velocity.x = targetVelocity.x;
 
