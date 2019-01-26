@@ -1,11 +1,11 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BomberEnemySpawner : MonoBehaviour
+public class FollowerEnemySpawner : MonoBehaviour
 {
-    public BomberEnemy enemy;
+    public FollowerEnemy enemy;
     public float spawnInterval = 4;
-
     void Start()
     {
         StartCoroutine("SpawnEnemySometimes");
@@ -16,12 +16,11 @@ public class BomberEnemySpawner : MonoBehaviour
     {
         for(; ; )
         {
-            var enemyClone = Instantiate<BomberEnemy>(enemy, transform.position, transform.rotation);
+            var enemyClone = Instantiate<FollowerEnemy >(enemy, transform.position, transform.rotation);
 
-            enemyClone.bombDroppingInterval = Random.Range(1.5f, 5);
+            enemyClone.speed= Random.Range(1f, 5f);
 
             yield return new WaitForSeconds(spawnInterval);
         }
     }
-
 }
