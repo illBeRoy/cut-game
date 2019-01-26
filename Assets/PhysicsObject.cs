@@ -24,6 +24,9 @@ public class PhysicsObject : MonoBehaviour {
     private const float minMoveDistance = 0.001f;
     private const float shellRadius = 0.01f;
     private Vector2 facingDirection;
+    private float gravityScale = 0f;
+    
+
 
     public void MoveRight()
     {
@@ -37,11 +40,32 @@ public class PhysicsObject : MonoBehaviour {
         this.facingDirection = Vector2.left;
     }
 
+    public void MoveUp()
+    {
+        this.UpdateMovement(new Vector2(0, 0.08f), true);
+    }
+
+    public void MoveDown()
+    {
+        this.UpdateMovement(new Vector2(0, -0.08f), true);
+    }
+
     public void Jump()
     {
         if (this.grounded) {
             this.velocity.y = this.jumpForce;
         }
+    }
+
+    public void disableRigidBody() {
+        this.gravityModifier = 0f;
+        this.rb2d.gravityScale = 0f;
+    }
+
+    public void enableRigidBody()
+    {
+        this.gravityModifier = 1f;
+        this.rb2d.gravityScale = this.gravityScale;
     }
 
     public Vector2 GetFacingDirection() {
@@ -51,7 +75,9 @@ public class PhysicsObject : MonoBehaviour {
     void OnEnable()
     {
         rb2d = GetComponent<Rigidbody2D> ();
+        this.gravityScale = this.rb2d.gravityScale;
     }
+
 
     void Start () 
     {
@@ -65,6 +91,7 @@ public class PhysicsObject : MonoBehaviour {
     {
         targetVelocity = Vector2.zero;
     }
+
 
     void LateUpdate()
     {

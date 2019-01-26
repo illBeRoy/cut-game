@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private PhysicsObject physicsObject;
     private Shooter shooter;
+    private bool isClimbing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +17,40 @@ public class PlayerController : MonoBehaviour
         this.shooter = this.GetComponent<Shooter>();
     }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag.ToString() == "Climbable")
+        {
+            this.isClimbing = true;
+            this.physicsObject.MoveUp();
+            this.physicsObject.disableRigidBody();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag.ToString() == "Climbable")
+        {
+            this.isClimbing = false;
+            this.physicsObject.MoveDown();
+            this.physicsObject.enableRigidBody();
+        }
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
+
+        if (this.isClimbing) {
+            if (Input.GetAxisRaw("Vertical") > 0)
+            {
+                this.physicsObject.MoveUp();
+            }
+            else if (Input.GetAxisRaw("Vertical") < 0)
+            {
+                this.physicsObject.MoveDown();
+            }
+        }
         if (Input.GetAxisRaw("Horizontal") > 0) {
             this.physicsObject.MoveRight();
         }
