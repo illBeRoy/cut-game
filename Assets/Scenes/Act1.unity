@@ -493,6 +493,16 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 303686891}
+    - target: {fileID: 7241546842652871917, guid: 832502186a6b74918a637be9821daa52,
+        type: 3}
+      propertyPath: startingHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241546842652871917, guid: 832502186a6b74918a637be9821daa52,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 09fb682fc7d6942929084d560d810eb0, type: 3}
     - target: {fileID: 7241546842652871916, guid: 832502186a6b74918a637be9821daa52,
         type: 3}
       propertyPath: minGroundNormalY

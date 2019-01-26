@@ -241,6 +241,7 @@ MonoBehaviour:
   startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 0}
+  deathSound: {fileID: 0}
   shootingPointFront: {fileID: 7241546841992772900}
   shootingPointUp: {fileID: 7909029956408313950}
 --- !u!114 &7241546842652871916
@@ -373,5 +374,9 @@ MonoBehaviour:
   - name: Jump Up
     frames:
     - {fileID: 21300000, guid: 12ae3d0ff4a5c41b79fa3723ec7a1ef2, type: 3}
+    framesPerSecond: 1
+  - name: Dead
+    frames:
+    - {fileID: 21300000, guid: 89a174be8f51a416a9d07a624fad079c, type: 3}
     framesPerSecond: 1
   customTarget: {fileID: 1090080471175479584}

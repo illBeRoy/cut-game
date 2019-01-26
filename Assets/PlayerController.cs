@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public Slider healthSlider;
+    public AudioClip deathSound;
 
     [Header("Gun Wiring")]
     public Transform shootingPointFront;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private Shooter shooter;
     private bool isClimbing = false;
     private bool isLookingUp = false;
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +36,25 @@ public class PlayerController : MonoBehaviour
 
     internal void TakeHit(float damage)
     {
+        if (this.isDead) {
+            return;
+        }
+
         currentHealth -= (int)(damage * 40f);
         healthSlider.value = currentHealth;
+        if (currentHealth <= 0) {
+            this.Die();
+        }
+    }
+
+    void Die()
+    {
+        this.isDead = true;
+        this.spriteAnimator.SetSpriteSheet("Dead");
+        this.GetComponent<AudioSource>().PlayOneShot(this.deathSound);
+        this.physicsObject.disableRigidBody();
+        this.physicsObject.enabled = false;
+        GameObject.FindObjectOfType<GameManager>().EndGame();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -59,13 +78,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        this.HandleControls();
+        if (!this.isDead) {
+            this.HandleControls();
+        }
     }
     
     void LateUpdate()
     {
-        this.HandleControls();
-        this.UpdateAnimations();
+        if (!this.isDead) {
+            this.HandleControls();
+            this.UpdateAnimations();
+        }
     }
 
     void HandleControls()
