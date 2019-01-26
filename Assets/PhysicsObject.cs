@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,15 +28,6 @@ public class PhysicsObject : MonoBehaviour {
     private Vector2 facingDirection;
     private float gravityScale = 0f;
     private AudioSource audioSource;
-
-    public bool IsOnGround()
-    {
-        return this.grounded;
-    }
-
-    public bool IsWalking() {
-        return this.grounded && Mathf.Abs(this.velocity.x) > .1;
-    }
 
     public void MoveRight()
     {
@@ -69,6 +60,16 @@ public class PhysicsObject : MonoBehaviour {
             this.velocity.y = this.jumpForce;
         }
     }
+
+    public bool IsOnGround()
+    {
+        return this.grounded;
+    }
+
+    public bool IsWalking() {
+        return this.grounded && Mathf.Abs(this.velocity.x) > .1;
+    }
+
 
     public void disableRigidBody() {
         this.gravityModifier = 0f;
@@ -137,7 +138,13 @@ public class PhysicsObject : MonoBehaviour {
             int count = rb2d.Cast (move, contactFilter, hitBuffer, distance + shellRadius);
             hitBufferList.Clear ();
             for (int i = 0; i < count; i++) {
-                hitBufferList.Add (hitBuffer [i]);
+                PlatformEffector2D platform = hitBuffer[i].collider.GetComponent<PlatformEffector2D>();
+                if (!platform || (hitBuffer[i].normal == Vector2.up && velocity.y < 0 && yMovement ))
+                {
+
+                    hitBufferList.Add(hitBuffer[i]);
+
+                }
             }
 
             for (int i = 0; i < hitBufferList.Count; i++) 
@@ -181,3 +188,4 @@ public class PhysicsObject : MonoBehaviour {
         this.gameObject.transform.localScale = localScale;
     }
 }
+
