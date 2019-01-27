@@ -112,6 +112,8 @@ public class PlayerController : MonoBehaviour
             } else {
                 this.spriteAnimator.Pause();
             }
+        } else {
+            this.spriteAnimator.Play();
         }
 
         if (Input.GetAxisRaw("Horizontal") > 0) {
